@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products – ModernPack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .products-layout { display: grid; grid-template-columns: 260px 1fr; gap: 36px; align-items: flex-start; }
+    @media(max-width:900px) { .products-layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+    .sidebar {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid var(--border);
+      position: sticky;
+      top: 90px;
+    }
+    .sidebar h4 { font-size: 0.95rem; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .sidebar-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 24px; }
+    .sidebar-list li button {
+      width: 100%;
+      text-align: left;
+      padding: 9px 14px;
+      border: none;
+      background: none;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.88rem;
+      color: var(--dark-gray);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sidebar-list li button:hover, .sidebar-list li button.active {
+      background: var(--light-gray);
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .sidebar-list li button .count {
+      background: var(--light-gray);
+      color: var(--gray);
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+    }
+    .sidebar-list li button.active .count {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    .price-range label { font-size: 0.82rem; color: var(--gray); display: block; margin-bottom: 8px; }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+    .price-display { display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 600; color: var(--primary); margin-top: 4px; }
+
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .products-header p { font-size: 0.9rem; color: var(--gray); }
+
+    .sort-select {
+      padding: 9px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.88rem;
+      color: var(--dark-gray);
+      background: var(--white);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .upload-section {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px;
+      border: 1px solid var(--border);
+      margin-top: 48px;
+    }
+    .upload-section h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .upload-section > p { font-size: 0.9rem; color: var(--gray); margin-bottom: 24px; }
+
+    .upload-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    @media(max-width:600px) { .upload-meta { grid-template-columns: 1fr; } }
+
+    .upload-actions { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <div class="logo-icon">🌾</div>
+        ModernPack
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="specifications.html">Specifications</a></li>
+        <li><a href="clients.html">Clients</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="contact.html" class="btn btn-primary">Get Quote</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="badge">Our Catalogue</span>
+    <h1>Premium Food Products</h1>
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a> <span>›</span> <span>Products</span>
+    </div>
+  </div>
+</div>
+
+<section class="section-pad" style="background:var(--off-white)">
+  <div class="container">
+    <div class="products-layout">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <h4>Categories</h4>
+        <ul class="sidebar-list">
+          <li><button class="active" data-filter="all">All Products <span class="count">18</span></button></li>
+          <li><button data-filter="rice">Rice & Grains <span class="count">5</span></button></li>
+          <li><button data-filter="spices">Spices <span class="count">4</span></button></li>
+          <li><button data-filter="oils">Oils & Fats <span class="count">3</span></button></li>
+          <li><button data-filter="flours">Flours <span class="count">3</span></button></li>
+          <li><button data-filter="coconut">Coconut Products <span class="count">3</span></button></li>
+        </ul>
+
+        <h4>Price Range</h4>
+        <div class="price-range">
+          <label>Set maximum price per kg</label>
+          <input type="range" id="priceRange" min="50" max="5000" value="5000">
+          <div class="price-display"><span>₹50</span><span id="priceVal">₹5,000</span></div>
+        </div>
+
+        <div style="margin-top:24px;">
+          <h4>Certifications</h4>
+          <ul class="sidebar-list">
+            <li><button>FSSAI Certified <span class="count">18</span></button></li>
+            <li><button>Organic <span class="count">8</span></button></li>
+            <li><button>ISO 22000 <span class="count">18</span></button></li>
+            <li><button>GI Tagged <span class="count">3</span></button></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Main Grid -->
+      <div>
+        <div class="products-header">
+          <p>Showing <strong>18 products</strong> across all categories</p>
+          <select class="sort-select">
+            <option>Sort: Featured</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Newest First</option>
+          </select>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+          <!-- Rice & Grains -->
+          <div class="product-card reveal" data-category="rice"
+               data-name="Matta Rice Premium" data-price="₹249/kg" data-emoji="🍚"
+               data-desc="Traditional Kerala Matta rice known for its rich fiber content and earthy flavour. Perfect for daily meals."
+               data-weight="1kg / 5kg / 25kg" data-shelf="18 months" data-origin="Palakkad, Kerala" data-cert="FSSAI, ISO 22000">
+            <div class="product-card-img">🍚<span class="product-tag">Bestseller</span></div>
+            <div class="product-card-body">
+              <h3>Matta Rice Premium</h3>
+              <p>Traditional Kerala red rice, fiber-rich</p>
+              <div class="product-card-footer">
+                <div class="price">₹249 <span>/ kg</span></div>
+                <button class="card-btn" data-modal>👁</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal" style="transition-delay:.05s" data-category="rice"
+               data-name="Jeerakasala Rice" data-price="₹199/kg" data-emoji="🫙"
+               data-desc="Aromatic short-grain biryani rice from Wayanad. Jasmine-like fragrance with soft fluffy texture."
+               data-weight="1kg / 5kg / 25kg" data-shelf="18 months" data-origin="Wayanad, Kerala" data-cert="FSSAI Certified">
+            <div class="product-card-img" style="background:linear-gradient(135deg,#fff8e1,#ffe082);">🫙<span class="product-tag">Biryani</span></div>
+            <div class="product-card-body">
+              <h3>Jeerakasala Rice</h3>
+              <p>Premium biryani rice with jasmine fragrance</p>
+              <div class="product-card-footer">
+                <div class="price">₹199 <span>/ kg</span></div>
+                <button class="card-btn" data-modal>👁</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal" style="transition-delay:.1s" data-category="rice"
+               data-name="Ponni Raw Rice" data-price="₹75/kg" data-emoji="🌾"
+               data-desc="Classic Ponni raw rice perfect for all South Indian dishes. Mild flavour and easy to cook."
+               data-weight="1kg / 5kg / 25kg" data-shelf="24 months" data-origin="Tamil Nadu" data-cert="FSSAI Certified">
+            <div class="product-card-img" style="background:linear-gradient(135deg,#fafafa,#f0f0f0);">🌾</div>
+            <div class="product-card-body">
+              <h3>Ponni Raw Rice</h3>
+              <p>Classic South Indian everyday rice</p>
+              <div class="product-card-footer">
+                <div class="price">₹75 <span>/ kg</span></div>
+                <button class="card-btn" data-modal>👁</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal" style="transition-delay:.15s" data-category="rice"
+               data-name="Basmati Extra Long" data-price="₹299/kg" data-emoji="🍛"
+               data-desc="Extra-long grain basmati rice aged 2 years for perfect fluffiness. Ideal for biryanis and pulao."
+               data-weight="1kg / 5kg / 10kg" data-shelf="24 months" data-origin="Punjab, India" data-cert="FSSAI, APEDA">
+            <div class="product-card-img" style="background:linear-gradient(135deg,#fffde7,#fff9c4);">🍛<span class="product-tag">Aged 2yr</span></div>
+            <div class="product-card-body">
+              <h3>Basmati Extra Long</h3>
+              <p>2-year aged premium basmati grain</p>
+              <div class="product-card-footer">
+                <div class="price">₹299 <span>/ kg</span></div>
+                <button class="card-btn" data-modal>👁</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spices -->
+          <div class="product-card reveal" style="transition-delay:.2s" data-category="spices"
+               data-name="Kerala Black Pepper" data-price="₹1,299/kg" data-emoji="🌶️"
+               data-desc="Premium grade black pepper from Western Ghats with bold pungent aroma and natural oils."
+               data-weight="100g / 500g / 1kg" data-shelf="24 months" data-origin="Wayanad, Kerala" data-cert="FSSAI, Organic">
+            <div class="product-card-img" style="background:linear-gradient(135deg,#2d1b0e,#4a2c1a);">🌶️<span class="product-tag">Organic</span></div>
+            <div class="product-card-body">
+              <h3>Kerala Black Pepper</h3>
+              <p>Bold & aromatic Western Ghats pepper</p>
+              <div class="product-card-footer">
+                <div class="price">₹1,299 <span>/ kg</span></div>
+                <button class="card-btn" data-modal>👁</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal" style="transition-delay:.25s" data-category="spices"
+               data-name="Cardamom Supreme" data-price="₹3,499/kg" data-emoji="🌿"
+               data-desc="GI tagged green cardamom from Idukki highlands with intense sweet-spicy aroma."
+               data-weight="50g / 100g / 500g" data-shelf="18 months" data-origin="Idukki, Kerala" data-cert="FSSAI, GI Tagged">
+            <div class="product-card-img" style="background:linear-gradient(135deg,#e8f5e9,#a5d6a7);">🌿<span class="product-tag">GI Tagged</span></div>
+            <div class="product-card-body">
+              <h3>Cardamom Supreme</h3>
+              <p>GI tagged Idukki highlands cardamom</p>
+              <div class="product-card-footer">
+                <div class="price">₹3,499 <span>/ kg</span></div>
+                <button class="card-btn" data-modal>👁</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal" style="transition-delay:.3s" data-category="spices"
+               data-name="Turmeric Powder" data-price="₹299/kg" data-emoji="🟡"
+               data-desc="Pure Lakadong turmeric with high curcumin content (5-7%). Deep golden colour and earthy aroma."
+               data-weight="100g / 500g / 1kg" data-shelf="18 months" data-origin="Meghalaya" data-cert="FSSAI, Organic">
+            <div class="product-card-img" style="background:linear-gradient(135deg,#fff8e1,#ffcc02);">🟡</div>
+            <div class="product-card-body">
+              <h3>Lakadong Turmeric</h3>
+              <p>High-curcumin premium turmeric powder</p>
+              <div class="product-card-footer">
+                <div class="price">₹299 <span>/ kg</span></div>
+                <button class="card-btn" data-modal>👁</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Oils -->
+          <div class="product-card reveal" style="transition-delay:.05s" data-category="oils"
+               data-name="Cold Press Coconut Oil" data-price="₹599/L" data-emoji="🥥"
+               data-desc="Extra virgin cold-pressed coconut oil. Pure, unrefined with natural coconut fragrance."
+               data-weight="500ml / 1L / 5L" data-shelf="24 months" data-origin="Thrissur, Kerala" data-cert="FSSAI, Organic">
+            <div class="product-card-img" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);">🥥<span class="product-tag">Cold Pressed</span></div>
+            <div class="product-card-body">
+              <h3>Cold Press Coconut Oil</h3>
+              <p>Extra virgin, naturally fragrant</p>
+              <div class="product-card-footer">
+                <div class="price">₹599 <span>/ L</span></div>
+                <button class="card-btn" data-modal>👁</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal" style="transition-delay:.1s" data-category="oils"
+               data-name="Sesame Oil" data-price="₹499/L" data-emoji="🌻"
+               data-desc="Cold-pressed sesame oil with rich nutty aroma. Traditional stone-pressed for maximum nutrition."
+               data-weight="500ml / 1L" data-shelf="18 months" data-origin="Andhra Pradesh" data-cert="FSSAI, Organic">
+            <div class="product-card-img" style="background:linear-gradient(135deg,#fff3e0,#ffcc80);">🌻</div>
+            <div class="product-card-body">
+              <h3>Sesame Gingelly Oil</h3>
+              <p>Stone-pressed sesame with rich flavour</p>
+              <div class="product-card-footer">
+                <div class="price">₹499 <span>/ L</span></div>
+                <button class="card-btn" data-modal>👁</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flours -->
+          <div class="product-card reveal" style="transition-delay:.15s" data-category="flours"
+               data-name="Stone-Ground Rice Flour" data-price="₹89/kg" data-emoji="🌾"
+               data-desc="Finely stone-ground rice flour for appam, puttu, and idiyappam. Traditional taste guaranteed."
+               data-weight="500g / 1kg / 5kg" data-shelf="12 months" data-origin="Kerala, India" data-cert="FSSAI Certified">
+            <div class="product-card-img" style="background:linear-gradient(135deg,#fef9e7,#fdebd0);">🌾</div>
+            <div class="product-card-body">
+              <h3>Stone-Ground Rice Flour</h3>
+              <p>Traditional stone-ground for authentic taste</p>
+              <div class="product-card-footer">
+                <div class="price">₹89 <span>/ kg</span></div>
+                <button class="card-btn" data-modal>👁</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal" style="transition-delay:.2s" data-category="flours"
+               data-name="Wheat Atta Premium" data-price="₹65/kg" data-emoji="🫓"
+               data-desc="Whole wheat chakki-fresh atta for soft, nutritious rotis. Stone-ground with full bran."
+               data-weight="1kg / 5kg / 10kg" data-shelf="3 months" data-origin="Punjab, India" data-cert="FSSAI Certified">
+            <div class="product-card-img" style="background:linear-gradient(135deg,#efebe9,#d7ccc8);">🫓</div>
+            <div class="product-card-body">
+              <h3>Whole Wheat Atta</h3>
+              <p>Chakki-fresh stone-ground wheat flour</p>
+              <div class="product-card-footer">
+                <div class="price">₹65 <span>/ kg</span></div>
+                <button class="card-btn" data-modal>👁</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coconut -->
+          <div class="product-card reveal" style="transition-delay:.25s" data-category="coconut"
+               data-name="Desiccated Coconut" data-price="₹249/kg" data-emoji="🥥"
+               data-desc="Premium desiccated coconut — finely shredded, naturally dried with no additives."
+               data-weight="200g / 500g / 1kg" data-shelf="12 months" data-origin="Kerala, India" data-cert="FSSAI, Export Grade">
+            <div class="product-card-img" style="background:linear-gradient(135deg,#fafafa,#e8f5e9);">🥥<span class="product-tag">Export Grade</span></div>
+            <div class="product-card-body">
+              <h3>Desiccated Coconut</h3>
+              <p>Export grade finely shredded coconut</p>
+              <div class="product-card-footer">
+                <div class="price">₹249 <span>/ kg</span></div>
+                <button class="card-btn" data-modal>👁</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Upload Section -->
+        <div class="upload-section reveal">
+          <h3>📸 Upload Product Images</h3>
+          <p>Submit images of your product requirement or existing product for our team to provide better recommendations.</p>
+          <div class="upload-meta">
+            <div class="form-group" style="margin-bottom:0">
+              <label>Product Name</label>
+              <input type="text" placeholder="Enter product name">
+            </div>
+            <div class="form-group" style="margin-bottom:0">
+              <label>Category</label>
+              <select>
+                <option>Select Category</option>
+                <option>Rice & Grains</option>
+                <option>Spices</option>
+                <option>Oils</option>
+                <option>Flours</option>
+                <option>Coconut Products</option>
+              </select>
+            </div>
+          </div>
+          <div class="upload-area" id="uploadArea">
+            <span class="upload-icon">📤</span>
+            <h4>Drag & Drop Product Images Here</h4>
+            <p>Supports JPG, PNG, WebP — up to 10 files, max 5MB each</p>
+            <button class="btn btn-outline" type="button">Browse Files</button>
+            <input type="file" id="fileInput" multiple accept="image/*" style="display:none">
+          </div>
+          <div class="upload-preview" id="uploadPreview"></div>
+          <div class="upload-actions">
+            <button class="btn btn-primary" type="button">Submit for Review</button>
+            <button class="btn btn-outline" type="button" onclick="document.getElementById('uploadPreview').innerHTML=''">Clear All</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Modal -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalName">Product Name</h3>
+      <button class="modal-close" id="modalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-grid">
+        <div class="modal-gallery">
+          <div class="modal-main-img" id="modalEmoji">🌾</div>
+          <div class="modal-thumbs">
+            <div class="modal-thumb active">🌾</div>
+            <div class="modal-thumb">📦</div>
+            <div class="modal-thumb">🏷️</div>
+            <div class="modal-thumb">📋</div>
+          </div>
+        </div>
+        <div class="modal-details">
+          <div id="modalPrice" style="font-size:1.8rem;font-weight:800;color:var(--accent);margin-bottom:12px;"></div>
+          <p id="modalDesc"></p>
+          <div class="modal-specs">
+            <div class="modal-spec-row"><span>Weight Options</span><span id="modalW"></span></div>
+            <div class="modal-spec-row"><span>Shelf Life</span><span id="modalShelf"></span></div>
+            <div class="modal-spec-row"><span>Origin</span><span id="modalOrig"></span></div>
+            <div class="modal-spec-row"><span>Certifications</span><span id="modalCert"></span></div>
+          </div>
+          <div class="modal-actions">
+            <a href="contact.html" class="btn btn-primary">Get Quote</a>
+            <a href="specifications.html" class="btn btn-outline">View Specs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="display:inline-flex;margin-bottom:16px;"><div class="logo-icon">🌾</div>ModernPack</div>
+          <p>Kerala's premier food product company delivering authentic, certified, and premium quality products since 2010.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">f</a>
+            <a href="#" class="social-btn">in</a>
+            <a href="#" class="social-btn">📷</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Categories</h5>
+          <ul>
+            <li><a href="#">Rice & Grains</a></li>
+            <li><a href="#">Spices</a></li>
+            <li><a href="#">Oils & Fats</a></li>
+            <li><a href="#">Flours</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:+919876543210">📞 +91 98765 43210</a></li>
+            <li><a href="mailto:info@modernpack.in">✉ info@modernpack.in</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2024 ModernPack. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> · <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="whatsapp-float">
+  <div class="wa-tooltip">Chat with us!</div>
+  <a href="https://wa.me/919876543210" class="wa-btn" target="_blank" rel="noopener">
+    <div class="wa-pulse"></div>
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script src="../js/main.js"></script>
+<script>
+  // Sidebar filter
+  document.querySelectorAll('.sidebar-list button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.sidebar-list button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      if (!filter) return;
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Price range
+  const range = document.getElementById('priceRange');
+  const priceVal = document.getElementById('priceVal');
+  if (range) {
+    range.addEventListener('input', () => {
+      priceVal.textContent = '₹' + parseInt(range.value).toLocaleString('en-IN');
+    });
+  }
+</script>
+</body>
+</html>

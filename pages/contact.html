@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – ModernPack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media(max-width:768px) { .faq-grid { grid-template-columns: 1fr; } }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .faq-item:hover { border-color: rgba(232,184,75,0.4); }
+
+    .faq-question {
+      padding: 18px 22px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-question .arrow {
+      font-size: 1rem;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-question .arrow { transform: rotate(180deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; }
+    .faq-answer p {
+      padding: 0 22px 18px;
+      font-size: 0.88rem;
+      color: var(--gray);
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+
+    .map-section {
+      background: var(--off-white);
+    }
+    .map-placeholder {
+      background: linear-gradient(135deg, var(--primary), #0f3460);
+      border-radius: var(--radius);
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-align: center;
+      gap: 12px;
+    }
+    .map-placeholder .map-icon { font-size: 3rem; }
+    .map-placeholder h3 { font-size: 1.3rem; }
+    .map-placeholder p { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+
+    .office-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .office-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .office-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: rgba(232,184,75,0.3); }
+    .office-card h4 { font-size: 1rem; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .office-card .type {
+      display: inline-block;
+      background: rgba(232,184,75,0.1);
+      color: var(--accent);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .office-card p { font-size: 0.85rem; color: var(--gray); line-height: 1.8; }
+
+    .social-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .social-contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      text-align: center;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .social-contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .social-contact-card .s-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+    .social-contact-card h5 { font-size: 0.9rem; color: var(--primary); margin-bottom: 2px; }
+    .social-contact-card p { font-size: 0.78rem; color: var(--gray); }
+
+    .form-success {
+      display: none;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #15803d;
+    }
+    .form-success.show { display: block; }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <div class="logo-icon">🌾</div>
+        ModernPack
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="specifications.html">Specifications</a></li>
+        <li><a href="clients.html">Clients</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li class="nav-cta"><a href="contact.html" class="btn btn-primary">Get Quote</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="badge">Get in Touch</span>
+    <h1>Contact Us</h1>
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a> <span>›</span> <span>Contact</span>
+    </div>
+  </div>
+</div>
+
+<!-- Main Contact -->
+<section class="section-pad">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <span class="badge">Reach Us</span>
+        <h3>Let's Talk Business</h3>
+        <p>Whether you're looking for a bulk supplier, want a product sample, or need a custom packaging solution — our team is ready to help.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="c-icon">📞</div>
+            <div>
+              <h5>Phone / WhatsApp</h5>
+              <p>+91 98765 43210</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">✉️</div>
+            <div>
+              <h5>Email Us</h5>
+              <p>info@modernpack.in</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">📍</div>
+            <div>
+              <h5>Head Office</h5>
+              <p>42A Industrial Estate, Kalamassery, Ernakulam, Kerala 683104</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">🕐</div>
+            <div>
+              <h5>Business Hours</h5>
+              <p>Monday – Saturday: 9:00 AM – 6:00 PM</p>
+            </div>
+          </div>
+          <div class="contact-item" style="cursor:pointer;" onclick="window.open('https://wa.me/919876543210?text=Hello%20ModernPack!')">
+            <div class="c-icon" style="background:#25D366;color:#fff;">💬</div>
+            <div>
+              <h5>WhatsApp Business</h5>
+              <p>Chat with us instantly on WhatsApp →</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal-right">
+        <div class="form-success" id="formSuccess">
+          ✅ Your message has been sent! Our team will get back to you within 24 hours.
+        </div>
+        <h3 style="font-size:1.3rem;margin-bottom:6px;">Send Us a Message</h3>
+        <p style="font-size:0.88rem;color:var(--gray);margin-bottom:28px;">Fill the form below and we'll respond within 24 hours.</p>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" placeholder="John" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" placeholder="Doe" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" placeholder="you@company.com" required>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="+91 98765 43210">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Company / Organization</label>
+            <input type="text" placeholder="Your company name">
+          </div>
+          <div class="form-group">
+            <label>Inquiry Type *</label>
+            <select required>
+              <option value="">Select inquiry type</option>
+              <option>Product Inquiry / Quote</option>
+              <option>Bulk Order</option>
+              <option>Distributor Partnership</option>
+              <option>Sample Request</option>
+              <option>Custom Packaging</option>
+              <option>Technical Specifications</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Products of Interest</label>
+            <input type="text" placeholder="e.g. Matta Rice, Black Pepper, Coconut Oil">
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea placeholder="Tell us about your requirements, quantity needed, delivery location, etc." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;">
+            📨 Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Office Locations -->
+<section class="section-pad" style="background:var(--off-white)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge">Our Locations</span>
+      <h2>Find Us</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="office-grid">
+      <div class="office-card reveal">
+        <div class="type">Head Office & Factory</div>
+        <h4>📍 Ernakulam, Kerala</h4>
+        <p>42A Industrial Estate<br>Kalamassery, Ernakulam<br>Kerala – 683104<br><br>📞 +91 98765 43210</p>
+      </div>
+      <div class="office-card reveal" style="transition-delay:.1s">
+        <div class="type">Regional Office</div>
+        <h4>📍 Kozhikode, Kerala</h4>
+        <p>Plot 8, Beypore Road<br>Kozhikode<br>Kerala – 673001<br><br>📞 +91 89765 43211</p>
+      </div>
+      <div class="office-card reveal" style="transition-delay:.2s">
+        <div class="type">Sales Office</div>
+        <h4>📍 Chennai, Tamil Nadu</h4>
+        <p>15/2 Anna Nagar West<br>Chennai<br>Tamil Nadu – 600040<br><br>📞 +91 77765 43212</p>
+      </div>
+      <div class="office-card reveal" style="transition-delay:.3s">
+        <div class="type">Warehouse</div>
+        <h4>📍 Bangalore, Karnataka</h4>
+        <p>Survey No. 12, Peenya<br>Industrial Area, Bangalore<br>Karnataka – 560058<br><br>📞 +91 66765 43213</p>
+      </div>
+    </div>
+
+    <div class="map-placeholder reveal">
+      <div class="map-icon">🗺️</div>
+      <h3>ModernPack – Head Office</h3>
+      <p>42A Industrial Estate, Kalamassery, Ernakulam, Kerala 683104</p>
+      <a href="https://maps.google.com" target="_blank" class="btn btn-white" style="margin-top:12px;">
+        Open in Google Maps →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Social & Quick Connect -->
+<section class="section-pad">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge">Connect Anywhere</span>
+      <h2>Other Ways to Reach Us</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="social-contact-grid">
+      <a href="https://wa.me/919876543210" class="social-contact-card reveal" target="_blank">
+        <span class="s-icon">💬</span>
+        <h5>WhatsApp</h5>
+        <p>Chat instantly</p>
+      </a>
+      <a href="mailto:info@modernpack.in" class="social-contact-card reveal" style="transition-delay:.1s">
+        <span class="s-icon">✉️</span>
+        <h5>Email</h5>
+        <p>info@modernpack.in</p>
+      </a>
+      <a href="#" class="social-contact-card reveal" style="transition-delay:.2s">
+        <span class="s-icon">📘</span>
+        <h5>Facebook</h5>
+        <p>@ModernPackIndia</p>
+      </a>
+      <a href="#" class="social-contact-card reveal" style="transition-delay:.3s">
+        <span class="s-icon">📷</span>
+        <h5>Instagram</h5>
+        <p>@modernpack.in</p>
+      </a>
+      <a href="#" class="social-contact-card reveal" style="transition-delay:.1s">
+        <span class="s-icon">💼</span>
+        <h5>LinkedIn</h5>
+        <p>ModernPack India</p>
+      </a>
+      <a href="#" class="social-contact-card reveal" style="transition-delay:.2s">
+        <span class="s-icon">▶️</span>
+        <h5>YouTube</h5>
+        <p>ModernPack Channel</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-pad" style="background:var(--off-white)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge">FAQ</span>
+      <h2>Frequently Asked Questions</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <div class="faq-question">What is your minimum order quantity? <span class="arrow">▾</span></div>
+        <div class="faq-answer"><p>Minimum order quantity varies by product. For most products it is 50kg. For bulk institutional orders, we offer flexible terms. Contact us for product-specific MOQ.</p></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.1s">
+        <div class="faq-question">Do you provide samples before bulk orders? <span class="arrow">▾</span></div>
+        <div class="faq-answer"><p>Yes! We provide free product samples (up to 500g per product, up to 5 products) to verified businesses. Submit a sample request through our contact form.</p></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.2s">
+        <div class="faq-question">What certifications do your products carry? <span class="arrow">▾</span></div>
+        <div class="faq-answer"><p>All products are FSSAI and ISO 22000:2018 certified. Select products also carry NPOP Organic, APEDA, and GI Tag certifications. Lab test reports are available on request.</p></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.3s">
+        <div class="faq-question">Do you offer custom private label packaging? <span class="arrow">▾</span></div>
+        <div class="faq-answer"><p>Yes, we offer private labelling and custom packaging for bulk orders above 500kg. Minimum lead time is 15 days. Contact our sales team for a detailed quote.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">What are your delivery timelines? <span class="arrow">▾</span></div>
+        <div class="faq-answer"><p>Within Kerala: 1-2 business days. Pan-India: 3-7 business days depending on location. Express delivery options are available at additional cost.</p></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.1s">
+        <div class="faq-question">Can I become a ModernPack distributor? <span class="arrow">▾</span></div>
+        <div class="faq-answer"><p>We are actively expanding our distributor network across India. If you are interested in becoming a distributor in your region, please fill out our contact form with "Distributor Partnership" as the inquiry type.</p></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.2s">
+        <div class="faq-question">Do you export to other countries? <span class="arrow">▾</span></div>
+        <div class="faq-answer"><p>Yes, we export to UAE, Kuwait, Bahrain, Singapore, Malaysia, and the UK. We are APEDA registered and comply with international food safety standards.</p></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.3s">
+        <div class="faq-question">What payment modes do you accept? <span class="arrow">▾</span></div>
+        <div class="faq-answer"><p>We accept bank transfers (NEFT/RTGS), UPI, cheques, and credit terms (30 days) for established accounts. International payments via wire transfer/LC.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="display:inline-flex;margin-bottom:16px;"><div class="logo-icon">🌾</div>ModernPack</div>
+          <p>Kerala's premier food product company delivering authentic, certified, and premium quality products since 2010.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">f</a>
+            <a href="#" class="social-btn">in</a>
+            <a href="#" class="social-btn">📷</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#">Bulk Supply</a></li>
+            <li><a href="#">Private Label</a></li>
+            <li><a href="#">Export</a></li>
+            <li><a href="#">Distribution</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:+919876543210">📞 +91 98765 43210</a></li>
+            <li><a href="mailto:info@modernpack.in">✉ info@modernpack.in</a></li>
+            <li><a href="#">📍 Ernakulam, Kerala</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2024 ModernPack. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> · <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="whatsapp-float">
+  <div class="wa-tooltip">Chat with us!</div>
+  <a href="https://wa.me/919876543210?text=Hello%20ModernPack!%20I%20want%20to%20know%20more%20about%20your%20products." class="wa-btn" target="_blank" rel="noopener">
+    <div class="wa-pulse"></div>
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script src="../js/main.js"></script>
+<script>
+  // FAQ Accordion
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Form submit with success message
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const success = document.getElementById('formSuccess');
+      const btn = form.querySelector('[type=submit]');
+      btn.innerHTML = '✓ Message Sent!';
+      btn.style.background = '#22c55e';
+      success.classList.add('show');
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => {
+        btn.innerHTML = '📨 Send Message';
+        btn.style.background = '';
+        success.classList.remove('show');
+        form.reset();
+      }, 4000);
+    });
+  }
+</script>
+</body>
+</html>

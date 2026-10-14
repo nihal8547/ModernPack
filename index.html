@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ModernPack – Premium Food Products</title>
+  <meta name="description" content="ModernPack delivers premium quality food products with authentic taste and rich nutrition. Explore our wide range of certified food products.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 30px;
+    }
+    .process-card {
+      text-align: center;
+      padding: 40px 28px;
+      border-radius: var(--radius);
+      background: var(--white);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      position: relative;
+    }
+    .process-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(232,184,75,0.3);
+    }
+    .process-num {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      color: var(--primary);
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .process-icon {
+      font-size: 2.8rem;
+      margin-bottom: 16px;
+    }
+    .process-card h4 { font-size: 1rem; margin-bottom: 8px; }
+    .process-card p { font-size: 0.85rem; color: var(--gray); }
+
+    .marquee-wrap { overflow: hidden; position: relative; }
+    .marquee-track {
+      display: flex;
+      gap: 40px;
+      animation: marquee 20s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 28px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--dark-gray);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">🌾</div>
+        ModernPack
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/products.html">Products</a></li>
+        <li><a href="pages/specifications.html">Specifications</a></li>
+        <li><a href="pages/clients.html">Clients</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="pages/contact.html" class="btn btn-primary">Get Quote</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="badge">🏆 Premium Quality Since 2010</span>
+        <h1>Nature's Finest<br><span>Food Products</span><br>Delivered Fresh</h1>
+        <p>From Kerala's lush fields to your table — authentic, certified, and packed with nutritional goodness you can trust.</p>
+        <div class="hero-actions">
+          <a href="pages/products.html" class="btn btn-primary">🛒 Explore Products</a>
+          <a href="pages/about.html" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.5);">Learn More</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="num" data-target="500">0</span>
+            <span>+ Products</span>
+          </div>
+          <div class="stat-item">
+            <span class="num" data-target="1200">0</span>
+            <span>+ Clients</span>
+          </div>
+          <div class="stat-item">
+            <span class="num" data-target="15">0</span>
+            <span>Years Exp.</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-product-card">
+          <div class="product-img-wrap">🌾</div>
+          <h3>Premium Kerala Rice</h3>
+          <p>Aromatic · Organic · FSSAI Certified</p>
+          <div class="price-tag">From ₹199 / kg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features Strip ── -->
+<div class="features-strip">
+  <div class="container">
+    <div class="features-strip-inner">
+      <div class="strip-item"><span class="icon">✅</span> FSSAI Certified</div>
+      <div class="strip-item"><span class="icon">🚚</span> Pan-India Delivery</div>
+      <div class="strip-item"><span class="icon">🌿</span> 100% Natural</div>
+      <div class="strip-item"><span class="icon">📦</span> Premium Packaging</div>
+      <div class="strip-item"><span class="icon">🔄</span> Easy Returns</div>
+      <div class="strip-item"><span class="icon">⭐</span> 4.9 / 5 Rating</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── About Teaser ── -->
+<section class="section-pad">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images reveal-left">
+        <div class="about-img-main">🏭</div>
+        <div class="about-img-secondary">🌾</div>
+        <div class="exp-badge">
+          <span class="big">15+</span>
+          <small>YEARS OF<br>EXCELLENCE</small>
+        </div>
+      </div>
+      <div class="about-text reveal-right">
+        <span class="badge">About ModernPack</span>
+        <h2>Crafted with Passion, Packed with Care</h2>
+        <p>We are Kerala's leading food product manufacturer and distributor, specializing in premium quality grains, spices, and packaged foods that carry the authentic taste of our land.</p>
+        <p>Every product that leaves our facility is quality tested, hygienically packed, and certified by national food authorities to ensure you receive only the best.</p>
+        <div class="about-points">
+          <div class="about-point">
+            <div class="ico">🌱</div>
+            <div>
+              <h4>Farm-to-Pack Freshness</h4>
+              <p>Direct sourcing from certified farmers ensures maximum freshness.</p>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="ico">🔬</div>
+            <div>
+              <h4>Quality Tested</h4>
+              <p>Every batch undergoes rigorous lab testing before dispatch.</p>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="ico">♻️</div>
+            <div>
+              <h4>Eco-Friendly Packaging</h4>
+              <p>Sustainable packaging that keeps products fresh and earth happy.</p>
+            </div>
+          </div>
+        </div>
+        <a href="pages/about.html" class="btn btn-primary">Discover Our Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Featured Products ── -->
+<section class="section-pad products-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge">Our Products</span>
+      <h2>Featured Products</h2>
+      <div class="divider"></div>
+      <p>Explore our most popular products — handpicked for quality, taste, and nutrition.</p>
+    </div>
+
+    <div class="product-filters reveal">
+      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn" data-filter="rice">Rice & Grains</button>
+      <button class="filter-btn" data-filter="spices">Spices</button>
+      <button class="filter-btn" data-filter="oils">Oils</button>
+      <button class="filter-btn" data-filter="flours">Flours</button>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card reveal" data-category="rice"
+           data-name="Matta Rice Premium" data-price="₹249/kg" data-emoji="🍚"
+           data-desc="Traditional Kerala Matta rice known for its rich fiber content and earthy flavour. Perfect for daily meals."
+           data-weight="1kg / 5kg / 25kg" data-shelf="18 months" data-origin="Palakkad, Kerala" data-cert="FSSAI, ISO 22000">
+        <div class="product-card-img">
+          🍚
+          <span class="product-tag">Bestseller</span>
+        </div>
+        <div class="product-card-body">
+          <h3>Matta Rice Premium</h3>
+          <p>Traditional Kerala red rice, fiber-rich and aromatic</p>
+          <div class="product-card-footer">
+            <div class="price">₹249 <span>/ kg</span></div>
+            <button class="card-btn" data-modal title="View Details">👁</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:0.1s" data-category="spices"
+           data-name="Kerala Black Pepper" data-price="₹1,299/kg" data-emoji="🌶️"
+           data-desc="Premium grade black pepper sourced from the Western Ghats. Bold, pungent and aromatic with natural oils intact."
+           data-weight="100g / 500g / 1kg" data-shelf="24 months" data-origin="Wayanad, Kerala" data-cert="FSSAI, Organic">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#2d1b0e,#4a2c1a);">
+          🌶️
+          <span class="product-tag">Organic</span>
+        </div>
+        <div class="product-card-body">
+          <h3>Kerala Black Pepper</h3>
+          <p>Premium grade Western Ghats black pepper</p>
+          <div class="product-card-footer">
+            <div class="price">₹1,299 <span>/ kg</span></div>
+            <button class="card-btn" data-modal title="View Details">👁</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:0.2s" data-category="oils"
+           data-name="Cold Press Coconut Oil" data-price="₹599/L" data-emoji="🥥"
+           data-desc="Extra virgin cold-pressed coconut oil with natural fragrance. No chemicals, no preservatives. Pure Kerala goodness."
+           data-weight="500ml / 1L / 5L" data-shelf="24 months" data-origin="Thrissur, Kerala" data-cert="FSSAI, Organic, Non-GMO">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);">
+          🥥
+          <span class="product-tag">Cold Pressed</span>
+        </div>
+        <div class="product-card-body">
+          <h3>Cold Press Coconut Oil</h3>
+          <p>Extra virgin, unrefined, naturally fragrant</p>
+          <div class="product-card-footer">
+            <div class="price">₹599 <span>/ L</span></div>
+            <button class="card-btn" data-modal title="View Details">👁</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:0.3s" data-category="flours"
+           data-name="Stone-Ground Rice Flour" data-price="₹89/kg" data-emoji="🌾"
+           data-desc="Finely ground rice flour from premium varieties. Ideal for traditional Kerala snacks like appam, puttu, and idiyappam."
+           data-weight="500g / 1kg / 5kg" data-shelf="12 months" data-origin="Kerala, India" data-cert="FSSAI Certified">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#fef9e7,#fdebd0);">
+          🌾
+        </div>
+        <div class="product-card-body">
+          <h3>Stone-Ground Rice Flour</h3>
+          <p>Traditional stone-ground for authentic taste</p>
+          <div class="product-card-footer">
+            <div class="price">₹89 <span>/ kg</span></div>
+            <button class="card-btn" data-modal title="View Details">👁</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:0.1s" data-category="spices"
+           data-name="Cardamom Supreme" data-price="₹3,499/kg" data-emoji="🌿"
+           data-desc="Green cardamom pods with intense aroma from Idukki highlands. Premium export quality with bold flavour."
+           data-weight="50g / 100g / 500g" data-shelf="18 months" data-origin="Idukki, Kerala" data-cert="FSSAI, GI Tagged">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#e8f5e9,#a5d6a7);">
+          🌿
+          <span class="product-tag">GI Tagged</span>
+        </div>
+        <div class="product-card-body">
+          <h3>Cardamom Supreme</h3>
+          <p>GI tagged Idukki highlands cardamom</p>
+          <div class="product-card-footer">
+            <div class="price">₹3,499 <span>/ kg</span></div>
+            <button class="card-btn" data-modal title="View Details">👁</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:0.2s" data-category="rice"
+           data-name="Jeerakasala Rice" data-price="₹199/kg" data-emoji="🫙"
+           data-desc="Aromatic short-grain rice perfect for biryani. Known for its jasmine-like fragrance and soft texture."
+           data-weight="1kg / 5kg / 25kg" data-shelf="18 months" data-origin="Wayanad, Kerala" data-cert="FSSAI Certified">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#fff8e1,#ffe082);">
+          🫙
+          <span class="product-tag">Biryani Special</span>
+        </div>
+        <div class="product-card-body">
+          <h3>Jeerakasala Rice</h3>
+          <p>Aromatic biryani rice with jasmine fragrance</p>
+          <div class="product-card-footer">
+            <div class="price">₹199 <span>/ kg</span></div>
+            <button class="card-btn" data-modal title="View Details">👁</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px;" class="reveal">
+      <a href="pages/products.html" class="btn btn-outline">View All Products →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Process ── -->
+<section class="section-pad">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge">How We Work</span>
+      <h2>Our Quality Process</h2>
+      <div class="divider"></div>
+      <p>From farm to your doorstep, every step is monitored for quality and freshness.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-card reveal">
+        <div class="process-num">1</div>
+        <div class="process-icon">🌱</div>
+        <h4>Farm Sourcing</h4>
+        <p>We partner with certified organic farmers across Kerala for the finest raw produce.</p>
+      </div>
+      <div class="process-card reveal" style="transition-delay:0.1s">
+        <div class="process-num">2</div>
+        <div class="process-icon">🔬</div>
+        <h4>Lab Testing</h4>
+        <p>Every lot is tested in our in-house NABL accredited lab for purity and safety.</p>
+      </div>
+      <div class="process-card reveal" style="transition-delay:0.2s">
+        <div class="process-num">3</div>
+        <div class="process-icon">📦</div>
+        <h4>Premium Packing</h4>
+        <p>Hygienic, airtight packaging with UV protection to extend shelf life naturally.</p>
+      </div>
+      <div class="process-card reveal" style="transition-delay:0.3s">
+        <div class="process-num">4</div>
+        <div class="process-icon">🚚</div>
+        <h4>Fast Delivery</h4>
+        <p>Temperature-controlled logistics network delivers freshness across India.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Client Marquee ── -->
+<section class="section-pad-sm" style="background:var(--light-gray);overflow:hidden;">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:36px;">
+      <span class="badge">Trusted By</span>
+      <h2>Our Happy Clients</h2>
+    </div>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-item">🏪 Lulu Hypermarket</div>
+      <div class="marquee-item">🛒 Big Bazaar</div>
+      <div class="marquee-item">🏬 Reliance Fresh</div>
+      <div class="marquee-item">🍽️ Hotel Leela</div>
+      <div class="marquee-item">✈️ Air India Catering</div>
+      <div class="marquee-item">🏥 KIMS Hospital</div>
+      <div class="marquee-item">🎓 NIT Calicut</div>
+      <div class="marquee-item">🏪 More Superstore</div>
+      <div class="marquee-item">🍽️ Saravana Bhavan</div>
+      <div class="marquee-item">🌐 Amazon Fresh</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="marquee-item">🏪 Lulu Hypermarket</div>
+      <div class="marquee-item">🛒 Big Bazaar</div>
+      <div class="marquee-item">🏬 Reliance Fresh</div>
+      <div class="marquee-item">🍽️ Hotel Leela</div>
+      <div class="marquee-item">✈️ Air India Catering</div>
+      <div class="marquee-item">🏥 KIMS Hospital</div>
+      <div class="marquee-item">🎓 NIT Calicut</div>
+      <div class="marquee-item">🏪 More Superstore</div>
+      <div class="marquee-item">🍽️ Saravana Bhavan</div>
+      <div class="marquee-item">🌐 Amazon Fresh</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-banner">
+  <div class="container">
+    <span class="badge">Get Started Today</span>
+    <h2>Ready to Order Premium Food Products?</h2>
+    <p>Join 1200+ satisfied clients who trust ModernPack for their food supply needs.</p>
+    <div class="cta-actions">
+      <a href="pages/contact.html" class="btn btn-primary">📞 Get a Free Quote</a>
+      <a href="pages/products.html" class="btn btn-white">Browse Catalogue</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="display:inline-flex;margin-bottom:16px;">
+            <div class="logo-icon">🌾</div>
+            ModernPack
+          </div>
+          <p>Kerala's premier food product company delivering authentic, certified, and premium quality products since 2010.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">f</a>
+            <a href="#" class="social-btn">in</a>
+            <a href="#" class="social-btn">📷</a>
+            <a href="#" class="social-btn">▶</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/about.html">About Us</a></li>
+            <li><a href="pages/products.html">Products</a></li>
+            <li><a href="pages/specifications.html">Specifications</a></li>
+            <li><a href="pages/clients.html">Clients</a></li>
+            <li><a href="pages/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Categories</h5>
+          <ul>
+            <li><a href="pages/products.html">Rice & Grains</a></li>
+            <li><a href="pages/products.html">Spices & Masalas</a></li>
+            <li><a href="pages/products.html">Coconut Products</a></li>
+            <li><a href="pages/products.html">Flours & Powders</a></li>
+            <li><a href="pages/products.html">Oils & Fats</a></li>
+            <li><a href="pages/products.html">Ready Mixes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:+919876543210">📞 +91 98765 43210</a></li>
+            <li><a href="mailto:info@modernpack.in">✉ info@modernpack.in</a></li>
+            <li><a href="#">📍 Ernakulam, Kerala</a></li>
+            <li><a href="#">🕐 Mon–Sat 9am–6pm</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2024 ModernPack. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a> · <a href="#">FSSAI: 1234567890</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── WhatsApp Float ── -->
+<div class="whatsapp-float">
+  <div class="wa-tooltip">Chat with us!</div>
+  <a href="https://wa.me/919876543210?text=Hello%20ModernPack!%20I%20am%20interested%20in%20your%20products." class="wa-btn" target="_blank" rel="noopener">
+    <div class="wa-pulse"></div>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+</div>
+
+<!-- ── Product Modal ── -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalName">Product Name</h3>
+      <button class="modal-close" id="modalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-grid">
+        <div class="modal-gallery">
+          <div class="modal-main-img" id="modalEmoji">🌾</div>
+          <div class="modal-thumbs">
+            <div class="modal-thumb active">🌾</div>
+            <div class="modal-thumb">📦</div>
+            <div class="modal-thumb">🏷️</div>
+            <div class="modal-thumb">📋</div>
+          </div>
+        </div>
+        <div class="modal-details">
+          <div class="price" id="modalPrice" style="font-size:1.8rem;font-weight:800;color:var(--accent);margin-bottom:12px;"></div>
+          <p id="modalDesc"></p>
+          <div class="modal-specs">
+            <div class="modal-spec-row"><span>Weight Options</span><span id="modalW"></span></div>
+            <div class="modal-spec-row"><span>Shelf Life</span><span id="modalShelf"></span></div>
+            <div class="modal-spec-row"><span>Origin</span><span id="modalOrig"></span></div>
+            <div class="modal-spec-row"><span>Certifications</span><span id="modalCert"></span></div>
+          </div>
+          <div class="modal-actions">
+            <a href="pages/contact.html" class="btn btn-primary">Get Quote</a>
+            <a href="pages/products.html" class="btn btn-outline">View More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
